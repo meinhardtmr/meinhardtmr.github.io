@@ -4,30 +4,30 @@ let metadata = [];
 //let logging = false;
 let logging = true;
 
-function populateDemoInfo(id){
-  logging ? console.log('populateDemoInfo: ', id, metadata.find(o => o.id == id).id) : null ;
+function populateDemoInfo(value){
+  logging ? console.log('populateDemoInfo: ', value, metadata.find(o => o.id == value).id) : null ;
   
-  let str = `<p>id:        ${metadata.find(o => o.id == id).id}        </p>
-             <p>ethnicity: ${metadata.find(o => o.id == id).ethnicity} </p>
-             <p>gender:    ${metadata.find(o => o.id == id).gender}    </p>
-             <p>age:       ${metadata.find(o => o.id == id).age}       </p>
-             <p>location:  ${metadata.find(o => o.id == id).location}  </p>
-             <p>bbtype:    ${metadata.find(o => o.id == id).bbtype}    </p>
-             <p>wfreq:     ${metadata.find(o => o.id == id).wfreq}     </p>`;
+  let str =`<p>id: ${metadata.find(o => o.id == value).id}</p>
+            <p>ethnicity: ${metadata.find(o => o.id == value).ethnicity}</p>
+            <p>gender: ${metadata.find(o => o.id == value).gender}</p>
+            <p>age: ${metadata.find(o => o.id == value).age}</p>
+            <p>location: ${metadata.find(o => o.id == value).location}</p>
+            <p>bbtype: ${metadata.find(o => o.id == value).bbtype}</p>
+            <p>wfreq: ${metadata.find(o => o.id == value).wfreq}</p>`;
    
   document.getElementById("sample-metadata").innerHTML = str 
   return;
 }
 
-function createHBarChart(id){
-  logging ? console.log('createHBarChart: ', id, samples.find(o => o.id == id).id) : null ;
+function createHBarChart(value){
+  logging ? console.log('createHBarChart: ', value, samples.find(o => o.id == value).id) : null ;
   
   let trace1 = {
-    x: samples.find(o => o.id == id).sample_values.slice(0,10).reverse(),
-    y: samples.find(o => o.id == id).otu_ids.slice(0,10).map(n => `OTU ${n}`).reverse(),
+    x: samples.find(o => o.id == value).sample_values.slice(0,10).reverse(),
+    y: samples.find(o => o.id == value).otu_ids.slice(0,10).map(n => `OTU ${n}`).reverse(),
     type: 'bar',
     orientation: 'h',
-    text: samples.find(o => o.id == id).otu_labels.slice(0,10).reverse()
+    text: samples.find(o => o.id == value).otu_labels.slice(0,10).reverse()
   };
 
   Plotly.newPlot("bar", [trace1]);
@@ -35,16 +35,16 @@ function createHBarChart(id){
   return;
 }
 
-function createBubbleChart(id){
-  logging ? console.log('createBubbleChart: ', id, samples.find(o => o.id == id).id) : null ;
+function createBubbleChart(value){
+  logging ? console.log('createBubbleChart: ', value, samples.find(o => o.id == value).id) : null ;
   
   let trace1 = {
-    x: samples.find(o => o.id == id).otu_ids,
-    y: samples.find(o => o.id == id).sample_values,
+    x: samples.find(o => o.id == value).otu_ids,
+    y: samples.find(o => o.id == value).sample_values,
     mode: 'markers',
-    text: samples.find(o => o.id == id).otu_labels,
-    marker: {color: samples.find(o => o.id == id).otu_ids,
-             size: samples.find(o => o.id == id).sample_values}
+    text: samples.find(o => o.id == value).otu_labels,
+    marker: {color: samples.find(o => o.id == value).otu_ids,
+             size: samples.find(o => o.id == value).sample_values}
   };
 
   let layout = {xaxis: 
@@ -64,7 +64,8 @@ async function optionChanged(value){
   //Create objects in parallel
   await Promise.all([populateDemoInfo(value),
                      createHBarChart(value),
-                     createBubbleChart(value)]);
+                     createBubbleChart(value),
+                     createGaugeChart(value)]);
 
   logging ? console.log('optionChanged Complete', value, samples.find(o => o.id == value).id, metadata.find(o => o.id == value).id) : null;
 
