@@ -35,7 +35,7 @@ function createGaugeChart(value){
   let theta = 3.14159 - (3.14159 * (n/9));
 
   let layout = {
-    title: '<b>Belly Button Washing Frequency<br>Scrubs per Week</b>',
+    title: '<b>Belly Button Washing Frequency</b><br>Scrubs per Week',
     shapes: [{type: "line",
               x0: .5,
               y0: .5,
