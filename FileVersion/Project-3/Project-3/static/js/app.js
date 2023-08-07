@@ -60,7 +60,7 @@ async function f1(){
   const res = await fetch('https://github.com/meinhardtmr/meinhardtmr.github.io/blob/main/FileVersion/Resources/geo_alt_fuel_stations.json');
   //const res = await fetch('https://developer.nrel.gov/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&&state=FL&&access=public');
   stations = await res.json();
-  stations = stations.features;
+  //stations = stations.features;
   console.log('Stations: ', stations)
  
   // Populate Stations ID dropdown
