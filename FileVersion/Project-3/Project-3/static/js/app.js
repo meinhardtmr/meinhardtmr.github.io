@@ -57,8 +57,8 @@ async function f1(){
   // Call app.py API and populate stations array
   //const res = await fetch(jsonURL);
   //const res = await fetch('../../Resources/geo_alt_fuel_stations.json');
-  //const res = await fetch('https://github.com/meinhardtmr/meinhardtmr.github.io/blob/main/FileVersion/Resources/geo_alt_fuel_stations.json');
-  const res = await fetch('https://developer.nrel.gov/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&&state=FL&&access=public');
+  const res = await fetch('https://github.com/meinhardtmr/meinhardtmr.github.io/blob/main/FileVersion/Resources/geo_alt_fuel_stations.json');
+  //const res = await fetch('https://developer.nrel.gov/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&&state=FL&&access=public');
   stations = await res.json();
   stations = stations.features;
   console.log('Stations: ', stations)
