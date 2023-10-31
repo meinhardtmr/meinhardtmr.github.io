@@ -58,7 +58,7 @@ async function f1(){
   //const res = await fetch(jsonURL);
   //const res = await fetch('../../Resources/geo_alt_fuel_stations.json');
   //const res = await fetch('geo_alt_fuel_stations.json');
-  const res = await fetch('https://github.com/meinhardtmr/Alternative-Fuel-Stations/blob/main/Resources/geo_alt_fuel_stations.json');
+  const res = await fetch('https://github.com/meinhardtmr/Alternative-Fuel-Stations/Resources/geo_alt_fuel_stations.json');
   //const res = await fetch('https://github.com/meinhardtmr/meinhardtmr.github.io/blob/main/FileVersion/Resources/geo_alt_fuel_stations.json');
   //const res = await fetch('https://developer.nrel.gov/api/alt-fuel-stations/v1.geojson?api_key=DEMO_KEY&&state=FL&&access=public');
   stations = await res.json();
